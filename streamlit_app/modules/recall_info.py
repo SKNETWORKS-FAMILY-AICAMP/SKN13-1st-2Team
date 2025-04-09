@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
-import pymysql
+from sqlalchemy import create_engine
 
 # 한국어 폰트 설정
 matplotlib.rc('font', family='Malgun Gothic')
@@ -23,23 +23,15 @@ BRAND_MAPPING = {
     "volkswagen": "폭스바겐그룹",
 }
 
-# 하드웨어 MySQL 연결
+# 하드웨어 MySQL 연결 (SQLAlchemy 사용)
 @st.cache_resource(show_spinner=False)
-def get_connection():
-    return pymysql.connect(
-        host="192.168.0.41",
-        user="skn13_woo",
-        password="1111",
-        db="car_data",
-        charset="utf8mb4",
-        cursorclass=pymysql.cursors.DictCursor,
-        autocommit=True  # ✅ rollback 에러 방지
-    )
+def get_engine():
+    return create_engine("mysql+pymysql://skn13_woo:1111@192.168.0.41/car_data?charset=utf8mb4")
 
 # DB에서 데이터 로드
 @st.cache_data(show_spinner=False)
 def load_data():
-    conn = get_connection()
+    engine = get_engine()
     query = """
         SELECT 
             brand, 
@@ -53,8 +45,7 @@ def load_data():
             defect_description AS reason
         FROM recalls
     """
-    df = pd.read_sql(query, con=conn)
-    conn.close()
+    df = pd.read_sql(query, con=engine)
 
     # ❗ 잘못 들어간 컬럼명 행 제거 (자동 정제)
     df = df[df["brand"].str.lower() != "brand"]
