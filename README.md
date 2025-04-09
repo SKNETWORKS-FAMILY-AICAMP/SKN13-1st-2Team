@@ -1,4 +1,5 @@
 # SKN13-1st-2Team
+DSMY(Don't Recall My Car)
 
 ## 0. 😀 팀 소개
 
@@ -8,7 +9,28 @@
 |내용 6|내용 7|내용 8|내용 9|내용 10|
 
 ## 1. 📩 프로젝트 개요
+- 소비자의 관점에서 합리적인 자동차 구매를 위해
+일반적으로 자동차 검색 사이트에서 제공하지 않는 리콜 정보 제공을 기반으로
+차량 추천 서비스 제공
 
-## 2. 🛜 프로젝트 구현?
 
-## 3. ?
+## 2. 🛜 프로젝트 기술스택
+- python
+- mysql
+- beatifulsoup
+- selenium
+- figma
+- streamlit
+- vscode
+- git
+
+## 3. UI-WireFrame
+- Figma screenshot
+
+## 4. ERD 제작
+- dbdiagram 이미지 첨부
+
+## 5. 요구사항 명세서
+- 구글 sheet이미지 첨부
+
+
