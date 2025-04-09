@@ -1,8 +1,20 @@
 import pandas as pd
 from utils.db import get_connection  # DB 연결 함수 가져오기
 
-# ✅ 사용자 정보 예시 (Streamlit에서 받아올 수 있음)
-example_user = {
+
+# from db import get_connection
+from sqlalchemy import create_engine
+
+# 1. MySQL 연결 설정
+# conn = get_connection()
+engine = create_engine("mysql+pymysql://skn13_woo:1111@192.168.0.41:3306/car_data")
+
+# 2. 데이터 불러오기
+cars_df = pd.read_sql("SELECT * FROM cars", engine)
+recalls_df = pd.read_sql("SELECT * FROM recalls", engine)
+
+# 3. 사용자 조건
+user = {
     "preferred_type": "SUV",
     "preferred_fuel": "디젤",
     "budget_min": 3000,
@@ -19,7 +31,15 @@ def basic_score(user, car):
         score += 5
     if user["preferred_fuel"] == car["fuel_type"]:
         score += 3
+<<<<<<< Updated upstream
     if car["price"] is not None and user["budget_min"] <= car["price"] <= user["budget_max"]:
+=======
+
+    # ✅ 가격이 범위 안에 들어오는 경우 점수 부여
+    price = pd.to_numeric(car["price"], errors="coerce")
+   
+    if not pd.isna(price) and user["budget_min"] <= price <= user["budget_max"]:
+>>>>>>> Stashed changes
         score += 2
     if user["num_kids"] >= 2 and car["car_type"] in ["SUV", "대형", "MPV"]:
         score += 3
@@ -63,6 +83,7 @@ def get_recommendations(user):
         t_score = trust_score(recalls_df, car["brand"], car["name"])
         total = b_score + t_score
 
+<<<<<<< Updated upstream
         results.append({
             "모델명": car["name"],
             "브랜드": car["brand"],
@@ -72,6 +93,19 @@ def get_recommendations(user):
             "기본점수": b_score,
             "신뢰도점수": t_score,
             "총점": total
+=======
+        result.append({
+            "model_id": car["model_id"],
+            "name": car["name"],
+            "brand": car["brand"],
+            "total_score": total,
+
+            "basic_score": b_score,
+            "trust_score": t_score,
+            "price": car["price"],
+            "fuel_type": car["fuel_type"],
+            "car_type": car["car_type"]
+>>>>>>> Stashed changes
         })
 
     return pd.DataFrame(results).sort_values(by="총점", ascending=False).reset_index(drop=True)
