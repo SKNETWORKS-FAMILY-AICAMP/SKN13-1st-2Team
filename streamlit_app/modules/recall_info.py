@@ -2,92 +2,133 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
+import numpy as np
+import pymysql
 
-# ✅ 한글 폰트 설정 (Windows용)
+# 한국어 폰트 설정
 matplotlib.rc('font', family='Malgun Gothic')
 matplotlib.rcParams['axes.unicode_minus'] = False
 
+# 브랜드 매핑
+BRAND_MAPPING = {
+    "bmw": "비엠더블유",
+    "kia": "기아",
+    "hyundai": "현대",
+    "benz": "벤츠",
+    "mercedes": "벤츠",
+    "chevrolet": "한국지엠",
+    "gm": "한국지엠",
+    "ssangyong": "쌍용",
+    "renault": "르노코리아",
+    "volkswagen": "폭스바겐그룹",
+}
+
+# 하드웨어 MySQL 연결
+@st.cache_resource(show_spinner=False)
+def get_connection():
+    return pymysql.connect(
+        host="192.168.0.41",
+        user="skn13_woo",
+        password="1111",
+        db="car_data",
+        charset="utf8mb4",
+        cursorclass=pymysql.cursors.DictCursor,
+        autocommit=True  # ✅ rollback 에러 방지
+    )
+
+# DB에서 데이터 로드
+@st.cache_data(show_spinner=False)
+def load_data():
+    conn = get_connection()
+    query = """
+        SELECT 
+            brand, 
+            name, 
+            release_start AS start_date,
+            release_end AS end_date,
+            recall_type,
+            announcement_start AS notice_date,
+            announcement_end AS fix_end_date,
+            source AS authority,
+            defect_description AS reason
+        FROM recalls
+    """
+    df = pd.read_sql(query, con=conn)
+    conn.close()
+
+    # ❗ 잘못 들어간 컬럼명 행 제거 (자동 정제)
+    df = df[df["brand"].str.lower() != "brand"]
+    return df
+
+# 메인 함수 정의
 def show():
     st.header("🚗 결함 정보 및 리콜 통계")
 
-    # ✅ 데이터 로딩
-    df = pd.read_csv("data/recalls.csv",
-                     encoding="utf-8",
-                     quotechar='"',
-                     on_bad_lines='skip',
-                     header=None,
-                     names=["brand", "name", "start_date", "end_date", "recall_type",
-                            "notice_date", "fix_end_date", "authority", "reason"])
+    df = load_data()
 
-    # ✅ 검색창
-    st.subheader("🔍 브랜드 또는 차종 입력")
-    search_input = st.text_input("브랜드 또는 차량명을 입력하세요 (예: BMW, 아이오닉, 쏘나타 등)")
+    # 문자열 정규화 (str.lower, trim, space remove)
+    df["brand_clean"] = df["brand"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
+    df["name_clean"] = df["name"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
 
-    # ✅ 추천 리스트 생성
-    recommendations = df[
-        df["brand"].str.contains(search_input, case=False, na=False) |
-        df["name"].str.contains(search_input, case=False, na=False)
-    ][["brand", "name"]]
+    # 검색어 입력
+    search_input = st.text_input("🔍 브랜드 또는 차종 입력", placeholder="BMW, 소나타, K5 등").strip().lower().replace(" ", "")
 
-    options = pd.concat([
-        recommendations["brand"],
-        recommendations["name"]
+    # 매핑된 브랜드 이름으로 변환 후 정규화
+    mapped_input = BRAND_MAPPING.get(search_input, search_input)
+    mapped_input_clean = mapped_input.strip().lower().replace(" ", "")
+
+    # 검색어 통해 brand/name에 포함되는 데이터 목록 보이기
+    matches = df[
+        df["brand_clean"].str.contains(mapped_input_clean, na=False) |
+        df["name_clean"].str.contains(mapped_input_clean, na=False)
+    ]
+
+    # 리스트업 표시 (autocomplete)
+    unique_matches = pd.concat([
+        matches["brand"], matches["name"]
     ]).dropna().unique().tolist()
 
-    options = [o for o in options if search_input.lower() in o.lower()][:10]
-
-    # ✅ 선택 옵션: 자동선택 방지
     selected_option = None
-    if options:
-        selected_option = st.selectbox("🔍 추천된 항목 중에서 선택하세요", ["(선택 안 함)"] + options)
+    if search_input and unique_matches:
+        selected_option = st.selectbox("🔎 추천 항목을 선택해주세요", ["(선택 안 함)"] + unique_matches)
         if selected_option == "(선택 안 함)":
             selected_option = None
 
-    # ✅ 최종 검색어: 추천 선택값 > 입력값
-    final_search = selected_option if selected_option else search_input
-    is_searching = bool(final_search.strip())
+    # 리스트에서 선택한 검색어 또는 입력한 검색어
+    final_query = selected_option.strip().lower().replace(" ", "") if selected_option else mapped_input_clean
 
-    # ✅ 검색 처리
-    if is_searching:
+    # 검색 결과 필터링
+    if final_query:
         filtered = df[
-            df["brand"].str.contains(final_search, case=False, na=False) |
-            df["name"].str.contains(final_search, case=False, na=False)
+            df["brand_clean"].str.contains(final_query, na=False) |
+            df["name_clean"].str.contains(final_query, na=False)
         ]
 
         if not filtered.empty:
-            st.success(f"🔎 '{final_search}'에 대한 리콜 정보 {len(filtered)}건을 찾았습니다.")
-            st.dataframe(filtered[["brand", "name", "start_date", "recall_type", "reason"]])
+            st.success(f"🔎 '{final_query}'에 대한 리콜 정보 {len(filtered)}개를 찾았습니다.")
+            st.dataframe(filtered["brand name recall_type reason".split()])
 
+            # 차량명 기준 리콜 건수 시각화
             st.subheader("📊 검색 결과 내 차량별 리콜 수")
             st.caption("📌 차종별 리콜 수 그래프는 상위 15개만 표시됩니다.")
 
             name_counts = filtered["name"].value_counts().head(15)
+            names = name_counts.index.tolist()
+            counts = name_counts.values
+            y_pos = np.arange(len(names))
 
-            # ✅ 막대 두께 자동 조절
-            bar_height = 0.5
-            graph_height = max(5, len(name_counts) * bar_height)
-
-            fig2, ax2 = plt.subplots(figsize=(10, graph_height))
-            name_counts.plot(kind="barh", ax=ax2)
-            ax2.set_xlabel("리콜 건수")
-            ax2.set_ylabel("차량 이름")
-            ax2.tick_params(labelsize=9)
-            ax2.invert_yaxis()
-            st.pyplot(fig2)
+            fig, ax = plt.subplots(figsize=(10, max(5, len(names) * 0.5)))
+            ax.barh(y_pos, counts, height=0.4)
+            ax.set_yticks(y_pos)
+            ax.set_yticklabels(names)
+            ax.set_xlabel("리콜 건수")
+            ax.set_ylabel("차량 이름")
+            ax.tick_params(labelsize=9)
+            ax.invert_yaxis()
+            st.pyplot(fig)
         else:
-            st.warning(f"'{final_search}'에 대한 리콜 정보가 없습니다.")
+            st.warning(f"'{final_query}'에 대한 리콜 정보가 없습니다.")
 
-    # ✅ 검색 중이 아닐 때만 전체 데이터 표시
-    if not is_searching:
-        st.subheader("📋 브랜드별 차량 목록")
+    else:
+        st.subheader("📋 전체 브랜드-차종 목록")
         st.dataframe(df[["brand", "name"]].drop_duplicates().sort_values(by="brand"))
-
-        st.subheader("📊 리콜 차량 수 TOP 10")
-        brand_counts = df["brand"].value_counts().head(10)
-
-        fig, ax = plt.subplots(figsize=(10, 6))
-        brand_counts.plot(kind="barh", ax=ax)
-        ax.set_xlabel("리콜 차량 수")
-        ax.set_ylabel("브랜드")
-        ax.invert_yaxis()
-        st.pyplot(fig)
