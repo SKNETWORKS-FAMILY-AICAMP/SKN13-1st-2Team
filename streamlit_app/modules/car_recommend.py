@@ -10,7 +10,7 @@ def show():
     conn = get_connection()
     cars_df = pd.read_sql("SELECT * FROM cars", conn)
     recalls_df = pd.read_sql("SELECT * FROM recalls", conn)
-    conn.close()
+    # conn.close()
 
     # ✅ price 컬럼을 숫자로 변환
     cars_df["price"] = pd.to_numeric(cars_df["price"], errors="coerce")

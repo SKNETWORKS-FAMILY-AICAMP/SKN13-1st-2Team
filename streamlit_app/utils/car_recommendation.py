@@ -1,7 +1,6 @@
 import pandas as pd
+from utils.db import get_connection  # DB 연결 함수 가져오기
 # from db import get_connection  # DB 연결 함수 가져오기
-from sqlalchemy import create_engine
-
 
 #  사용자 조건
 user = {
@@ -58,8 +57,7 @@ def trust_score(recalls_df, brand, name):
 # ✅ 차량 추천 함수 (Streamlit에서 호출 가능)
 def get_recommendations(user):
 
-    engine = create_engine("mysql+pymysql://skn13_woo:1111@192.168.0.41:3306/car_data")
-
+    engine = get_connection()
     #  데이터 불러오기
     cars_df = pd.read_sql("SELECT * FROM cars", engine)
     recalls_df = pd.read_sql("SELECT * FROM recalls", engine)
