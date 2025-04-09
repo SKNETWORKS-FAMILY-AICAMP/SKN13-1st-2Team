@@ -1,21 +1,8 @@
-
 import pandas as pd
-import pymysql
+from utils.db import get_connection  # DB 연결 함수 가져오기
+# from db import get_connection  # DB 연결 함수 가져오기
 
-# 1. MySQL 연결 설정
-conn = pymysql.connect(
-    host='localhost',
-    user='your_username',
-    password='your_password',
-    db='car_data',
-    charset='utf8'
-)
-
-# 2. 데이터 불러오기
-cars_df = pd.read_sql("SELECT * FROM cars", conn)
-recalls_df = pd.read_sql("SELECT * FROM recalls", conn)
-
-# 3. 사용자 조건
+#  사용자 조건
 user = {
     "preferred_type": "SUV",
     "preferred_fuel": "디젤",
@@ -25,7 +12,7 @@ user = {
     "num_kids": 2
 }
 
-# 4. 기본 적합도 점수
+# ✅ 기본 적합도 점수 함수
 def basic_score(user, car):
     score = 0
 
@@ -35,16 +22,14 @@ def basic_score(user, car):
         score += 3
 
     # ✅ 가격이 범위 안에 들어오는 경우 점수 부여
-    if car["price"] is not None and user["budget_min"] <= car["price"] <= user["budget_max"]:
+    price = pd.to_numeric(car["price"], errors="coerce")
+   
+    if not pd.isna(price) and user["budget_min"] <= price <= user["budget_max"]:
         score += 2
-
-    # 자녀 수가 많으면 SUV 등 가산점
     if user["num_kids"] >= 2 and car["car_type"] in ["SUV", "대형", "MPV"]:
         score += 3
 
-    # 국산/해외 선호도 반영
     korean_brands = ["현대", "기아", "제네시스", "쉐보레", "쌍용", "르노삼성"]
-
     if user["brand_origin"] == "국산" and car["brand"] in korean_brands:
         score += 2
     elif user["brand_origin"] == "해외" and car["brand"] not in korean_brands:
@@ -52,8 +37,7 @@ def basic_score(user, car):
 
     return score
 
-
-# 5. 신뢰도 점수
+# ✅ 리콜 기반 신뢰도 점수 함수
 def trust_score(recalls_df, brand, name):
     entries = recalls_df[(recalls_df["brand"] == brand) & (recalls_df["name"] == name)]
     base_score = 10
@@ -70,30 +54,34 @@ def trust_score(recalls_df, brand, name):
 
     return max(base_score - penalty, 0)
 
-# 6. 추천 함수
-def get_recommendations(user, cars_df, recalls_df):
-    result = []
+# ✅ 차량 추천 함수 (Streamlit에서 호출 가능)
+def get_recommendations(user):
+
+    engine = get_connection()
+    #  데이터 불러오기
+    cars_df = pd.read_sql("SELECT * FROM cars", engine)
+    recalls_df = pd.read_sql("SELECT * FROM recalls", engine)
+
+    results = []
 
     for _, car in cars_df.iterrows():
         b_score = basic_score(user, car)
         t_score = trust_score(recalls_df, car["brand"], car["name"])
         total = b_score + t_score
-
-        result.append({
-            "model_id": car["model_id"],
-            "name": car["name"],
-            "brand": car["brand"],
-            "total_score": total,
-            "basic_score": b_score,
-            "trust_score": t_score,
-            "price": car["price"],
-            "fuel_type": car["fuel_type"],
-            "car_type": car["car_type"]
+        results.append({
+            "모델명": car["name"],
+            "브랜드": car["brand"],
+            "연료": car["fuel_type"],
+            "차종": car["car_type"],
+            "가격": car["price"],
+            "기본점수": b_score,
+            "신뢰도점수": t_score,
+            "총점": total
         })
 
-    return pd.DataFrame(result).sort_values(by="total_score", ascending=False)
+    return pd.DataFrame(results).sort_values(by="총점", ascending=False).reset_index(drop=True)
 
-# 7. 실행
+# ✅ 테스트용 실행 (단독 실행 시 사용)
 if __name__ == "__main__":
-    recommend_df = get_recommendations(user, cars_df, recalls_df)
-    print(recommend_df.head(10))
+    df = get_recommendations(user)
+    print(df.head(10))
