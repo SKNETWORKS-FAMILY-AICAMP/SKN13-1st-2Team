@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
 import pymysql
+from utils.db import get_connection  # DB 연결 함수 가져오기
+
 
 # 한국어 폰트 설정
 matplotlib.rc('font', family='Malgun Gothic')
@@ -23,18 +25,6 @@ BRAND_MAPPING = {
     "volkswagen": "폭스바겐그룹",
 }
 
-# 하드웨어 MySQL 연결
-@st.cache_resource(show_spinner=False)
-def get_connection():
-    return pymysql.connect(
-        host="192.168.0.41",
-        user="skn13_woo",
-        password="1111",
-        db="car_data",
-        charset="utf8mb4",
-        cursorclass=pymysql.cursors.DictCursor,
-        autocommit=True  # ✅ rollback 에러 방지
-    )
 
 # DB에서 데이터 로드
 @st.cache_data(show_spinner=False)
@@ -54,7 +44,8 @@ def load_data():
         FROM recalls
     """
     df = pd.read_sql(query, con=conn)
-    conn.close()
+    print(df)
+    # conn.close()
 
     # ❗ 잘못 들어간 컬럼명 행 제거 (자동 정제)
     df = df[df["brand"].str.lower() != "brand"]
@@ -65,7 +56,7 @@ def show():
     st.header("🚗 결함 정보 및 리콜 통계")
 
     df = load_data()
-
+    
     # 문자열 정규화 (str.lower, trim, space remove)
     df["brand_clean"] = df["brand"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
     df["name_clean"] = df["name"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
