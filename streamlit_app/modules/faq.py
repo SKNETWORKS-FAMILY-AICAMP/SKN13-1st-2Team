@@ -1,18 +1,16 @@
 import streamlit as st
 import pandas as pd
 from utils.db import get_connection
+from sqlalchemy import text
 
 POSTS_PER_PAGE = 5
 
-
 def get_faq_data():
-    conn = get_connection()
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT question AS 질문, answer AS 답변 FROM car_faq")
-        result = cursor.fetchall()
-    conn.close()
-    return result
-
+    engine = get_connection()
+    with engine.connect() as conn:
+        query = text("SELECT question AS 질문, answer AS 답변 FROM car_faq")
+        result = conn.execute(query)
+        return result.mappings().all()  # 바로 리스트로 변환
 
 def show():
     st.title("❓ FAQ")
@@ -28,7 +26,7 @@ def show():
     current_page = st.session_state.faq_page
     start_idx = (current_page - 1) * POSTS_PER_PAGE
     end_idx = start_idx + POSTS_PER_PAGE
-    page_data = faq_data[start_idx:end_idx]
+    page_data = faq_data[start_idx:end_idx]  # ✅ 슬라이싱 가능
 
     for row in page_data:
         with st.expander(f"Q. {row['질문']}"):
@@ -43,7 +41,10 @@ def show():
                 st.session_state.faq_page -= 1
 
     with col2:
-        st.markdown(f"<div style='text-align:center;'>📄 페이지 {current_page} / {total_pages}</div>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div style='text-align:center;'>📄 페이지 {current_page} / {total_pages}</div>",
+            unsafe_allow_html=True
+        )
 
     with col3:
         if current_page < total_pages:
