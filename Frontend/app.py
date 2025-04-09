@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 # 페이지 모듈 import
-from pages import car_view, car_recommend, recall_info, faq
+from modules import car_view, car_recommend, recall_info, faq
 
 # 페이지 설정
 st.set_page_config(page_title="신차 검색 서비스", layout="wide")
