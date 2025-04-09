@@ -55,7 +55,7 @@ def trust_score(recalls_df, brand, name):
     return max(base_score - penalty, 0)
 
 # ✅ 차량 추천 함수 (Streamlit에서 호출 가능)
-def get_recommendations(user):
+def get_recommendations(user, cars_df, recalls_df):
 
     engine = get_connection()
     #  데이터 불러오기
