@@ -23,7 +23,7 @@ with st.sidebar:
             "container": {"padding": "4!important"},
             "icon": {"font-size": "20px"},
             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px"},
-            "nav-link-selected": {"background-color": "#5bc0de"},
+            "nav-link-selected": {"background-color": "#F28500"},
         }
     )
 

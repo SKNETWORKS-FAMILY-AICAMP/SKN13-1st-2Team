@@ -8,7 +8,7 @@ POSTS_PER_PAGE = 5
 def get_faq_data():
     conn = get_connection()
     with conn.cursor() as cursor:
-        cursor.execute("SELECT question AS 질문, answer AS 답변 FROM faq_table")
+        cursor.execute("SELECT question AS 질문, answer AS 답변 FROM car_faq")
         result = cursor.fetchall()
     conn.close()
     return result
