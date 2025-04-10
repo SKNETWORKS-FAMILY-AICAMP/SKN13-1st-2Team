@@ -134,7 +134,7 @@ def map_brand(brand: str, name) -> str | None:
         else:
             return None
 
-    ## 에프엠케이
+    ## 에프엠케이   
     elif brand == "에프엠케이":
         if "페라리" in name:
             return "페라리"
