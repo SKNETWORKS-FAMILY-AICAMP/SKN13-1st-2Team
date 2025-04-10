@@ -1,8 +1,7 @@
 #### SKN13-1st-2Team
  - SK 네트웍스 AI과정 1차 프로젝트
 
-## 0. 😀 팀 소개
-팀명 : DSMY(Don't Recall My Car)
+## 0. 👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
 ![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
 ![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
