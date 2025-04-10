@@ -152,19 +152,26 @@ def show():
             values=pie_data.values,
             hole=0.4,  # 도넛형
             textinfo='percent+label',  # 퍼센트와 라벨 둘 다 표시
-            insidetextorientation='auto'
+            insidetextorientation='horizontal', # 텍스트 가로고정
+            textfont=dict(size=16),     # 라벨 기본 폰트
+            insidetextfont=dict(size=15),  # 내부 텍스트 폰트
+            pull=[0.03]*len(pie_data),  # 살짝 분리 효과(optional)
         )])
 
+
         fig.update_layout(
-            width=700,
-            height=500,
+            width=900,
+            height=800,
             margin=dict(l=50, r=150, t=50, b=50),
             legend=dict(
                 title="브랜드",
-                x=1.05,  # 오른쪽에 정렬
-                y=0.5,
-                font=dict(size=10),
-                title_font=dict(size=11)
+                orientation="h",   # 수직 배치
+                yanchor="middle",
+                y=-0.5,            # 도넛 차트 아래에 배치
+                x=0.5,
+                xanchor="center",
+                font=dict(size=13),
+                title_font=dict(size=14)
             )
         )
 
