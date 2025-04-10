@@ -24,8 +24,8 @@ st.markdown("""
 
     /* 버튼 스타일 (예: 차량 보기) */
     div.stButton > button {
-        background-color: #f57c00;
-        color: white;
+        background-color: #fef4e3;
+        color: black;
         border: none;
         border-radius: 8px;
         padding: 0.5em 1em;
@@ -33,7 +33,7 @@ st.markdown("""
 
     /* 버튼 호버 스타일 */
     div.stButton > button:hover {
-        background-color: #e66900;
+        background-color: #F28500;
         color: white;
     }
 
@@ -47,7 +47,10 @@ st.markdown("""
 
 # ✅ 사이드바 메뉴 구성 (세션 상태 제거)
 with st.sidebar:
-    st.image("img/drmc_logo.png", width=200)  # ✅ 경로 지정
+    # 👉 사이드바 너비 안에서 3등분해서 가운데 칼럼에만 이미지 배치
+    col1, col2, col3 = st.columns([1, 8, 1])  # 비율 조절 가능
+    with col2:
+        st.image("img/drmc_logo.png", width=200)
     selected = option_menu( 
         "신차 검색 서비스",
         ["차량 보기", "추천 차량", "결함 정보", "FAQ"],

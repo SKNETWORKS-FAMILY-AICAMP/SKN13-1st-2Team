@@ -117,7 +117,7 @@ def show():
             fig_height = bar_height * num_bars + margin
 
             fig, ax = plt.subplots(figsize=(10, fig_height))
-            ax.barh(y_pos, counts, height=bar_height)
+            ax.barh(y_pos, counts, height=bar_height, color='#F4A261')
             ax.set_yticks(y_pos)
             ax.set_yticklabels(names)
             ax.set_xlabel("리콜 건수")
