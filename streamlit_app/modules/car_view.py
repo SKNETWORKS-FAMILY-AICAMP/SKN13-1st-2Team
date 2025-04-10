@@ -20,7 +20,9 @@ def get_all_cars():
 def show():
     st.title("🚘 차량 브랜드 보기")
 
-    # --- 클릭 처리용 URL 파라미터 추출 ---
+    korean_brands = ["기아", "대창모터스", "디피코", "모빌리티네트웍스", "쎄보모빌리티", "에스에스라이트",
+                     "이비온", "자일자동차", "제네시스", "제이스모빌리티", "트라베리", "현대"]
+
     query_params = st.query_params
     clicked_brand = query_params.get("brand")
 
@@ -30,7 +32,10 @@ def show():
         st.session_state.selected_brand = None
 
     brands_df = get_brands()
+    domestic_df = brands_df[brands_df["brand"].isin(korean_brands)]
+    imported_df = brands_df[~brands_df["brand"].isin(korean_brands)]
 
+    # 스타일
     st.markdown("""
     <style>
     .brand-btn {
@@ -57,24 +62,48 @@ def show():
     </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("### 🌟 브랜드 선택")
+    st.markdown("### 🚩 브랜드 선택")
 
-    for i in range(0, len(brands_df), 11):
-        cols = st.columns(11)
-        for j in range(11):
-            if i + j < len(brands_df):
-                brand = brands_df.iloc[i + j]
-                with cols[j]:
-                    html = f"""
-                    <form action="" method="get">
-                        <input type="hidden" name="brand" value="{brand['brand']}"/>
-                        <button type="submit" class="brand-btn">
-                            <img src="{brand['brand_img']}"/>
-                            <div>{brand['brand']}</div>
-                        </button>
-                    </form>
-                    """
-                    st.markdown(html, unsafe_allow_html=True)
+    left,_, right = st.columns([3 ,0.01, 8])
+
+    with left:
+        st.markdown("<h5>국산차</h5>", unsafe_allow_html=True)
+        for i in range(0, len(domestic_df), 3):
+            cols = st.columns(3)
+            for j in range(3):
+                if i + j < len(domestic_df):
+                    brand = domestic_df.iloc[i + j]
+                    with cols[j]:
+                        html = f"""
+                        <form action="" method="get">
+                            <input type="hidden" name="brand" value="{brand['brand']}"/>
+                            <button type="submit" class="brand-btn">
+                                <img src="{brand['brand_img']}"/>
+                                <div>{brand['brand']}</div>
+                            </button>
+                        </form>
+                        """
+                        st.markdown(html, unsafe_allow_html=True)
+
+
+    with right:
+        st.markdown("<h5>수입차</h5>", unsafe_allow_html=True)
+        for i in range(0, len(imported_df), 8):
+            cols = st.columns(8)
+            for j in range(8):
+                if i + j < len(imported_df):
+                    brand = imported_df.iloc[i + j]
+                    with cols[j]:
+                        html = f"""
+                        <form action="" method="get">
+                            <input type="hidden" name="brand" value="{brand['brand']}"/>
+                            <button type="submit" class="brand-btn">
+                                <img src="{brand['brand_img']}"/>
+                                <div>{brand['brand']}</div>
+                            </button>
+                        </form>
+                        """
+                        st.markdown(html, unsafe_allow_html=True)
 
     # 전체 보기 버튼
     if st.session_state.get("selected_brand"):

@@ -60,14 +60,14 @@ def show():
 
     with st.form("car_conditions"):
         st.markdown("#### 💡 조건 입력")
-        price_range = st.slider("가격대 (천 만원)", min_value=price_min, max_value=price_max, value=(3000, 5000), step=500)
+        price_range = st.slider("가격대 (만원)", min_value=price_min, max_value=price_max, value=(3000, 5000), step=500)
         adjusted_max_price = real_max_price if price_range[1] >= price_max else price_range[1]
 
         col1, col2 = st.columns(2)
         with col1:
-            car_type = st.selectbox("차종", [""] + list(car_types))
+            car_type = st.selectbox("차종", ["(선택 안 함)"] + list(car_types))
         with col2:
-            fuel_type = st.selectbox("연료 타입", [""] + list(fuel_types))
+            fuel_type = st.selectbox("연료 타입", ["(선택 안 함)"] + list(fuel_types))
 
         col3, col4 = st.columns(2)
         with col3:
