@@ -3,6 +3,8 @@
 
 ##👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
 
+<img src="SKN13-1st-2Team/img/구재회.png" alt="로고" width="300"/>
+
 <img src="[logo.png](https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN13-1st-2Team/blob/main/%EA%B5%AC%EC%9E%AC%ED%9A%8C.png)" alt="로고" width="300"/>
 ![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
