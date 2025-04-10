@@ -23,8 +23,8 @@
 
 2. 프로젝트 내용
    - 사용 기술
-   - ERD
    - WBS
+   - ERD
    - 데이터 시각화 플렛폼
 
 3. 한줄 회고
@@ -48,7 +48,7 @@ ex)
 
 ### 🛠️ 프로젝트 기술스택<이미지형식으로넣기>
 
-🛜
+
 - python
 - mysql
 - beatifulsoup
@@ -58,13 +58,13 @@ ex)
 - vscode
 - git
 
-## 3. UI-WireFrame
+## 🛜 WBS
 ![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
 
-## 4. ERD 제작
+## 📜 ERD
 ![car_ERD찐막](https://github.com/user-attachments/assets/43425f5b-f7ad-4533-8949-9c157c1d3730)
 
-## 5. 요구사항 명세서
+## 📊 데이터 시각화 플렛폼
 ![image](https://github.com/user-attachments/assets/86219b60-f072-443b-a58c-14855ddc6f29)
 
 
