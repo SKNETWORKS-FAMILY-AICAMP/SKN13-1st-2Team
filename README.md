@@ -3,8 +3,9 @@
 
 ##👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
 
-
-img src="[(https://www.google.com/url?sa=i&url=https%3A%2F%2Fnamu.wiki%2Fw%2F%25EB%258F%2584%25EB%259D%25BC%25EC%2597%2590%25EB%25AA%25BD%2528%25EB%258F%2584%25EB%259D%25BC%25EC%2597%2590%25EB%25AA%25BD%2529&psig=AOvVaw2ioOMdzWrcCavDWa4tD74y&ust=1744358331331000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCjlqf_zIwDFQAAAAAdAAAAABAJ).png" width="200" height="400"/
+<p align="center">
+  <img src="(https://www.google.com/url?sa=i&url=https%3A%2F%2Fnamu.wiki%2Fw%2F%25EB%258F%2584%25EB%259D%25BC%25EC%2597%2590%25EB%25AA%25BD%2528%25EB%258F%2584%25EB%259D%25BC%25EC%2597%2590%25EB%25AA%25BD%2529&psig=AOvVaw2ioOMdzWrcCavDWa4tD74y&ust=1744358331331000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCjlqf_zIwDFQAAAAAdAAAAABAJ).png" width="200"/>
+</p>
 ![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
 ![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
