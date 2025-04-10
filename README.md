@@ -1,7 +1,8 @@
 # SKN13-1st-2Team
-DSMY(Don't Recall My Car)
+SK 네트웍스 AI과정 1차 프로젝트
 
 ## 0. 😀 팀 소개
+팀명 : DSMY(Don't Recall My Car)
 
 |제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
 |:---:|:---:|:---:|:---:|:---:|
