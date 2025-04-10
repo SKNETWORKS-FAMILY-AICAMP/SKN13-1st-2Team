@@ -1,22 +1,16 @@
 # project 1 DB 
 
--- Test
+-- Test 
+delete from recalls;
+delete from engine_specs;
+delete from ev_specs;
+delete from cars;
 select * from cars;
-select	distinct brand,
-		count(*)
-from cars
-group by 1
+
+select distinct brand from recalls
 order by 1;
+where brand like '%포드%';
 
-select * from recalls;
-select count(*) from recalls;	-- ex) 3927 without error. 
-
-
-select	distinct brand,
-		count(*)
-from recalls
-group by brand
-order by 1;
-
-select	count(distinct brand)
-from	recalls;	-- ex) 91
+select * from recalls
+where brand like '%토요%';
+and name like '%EV%';
