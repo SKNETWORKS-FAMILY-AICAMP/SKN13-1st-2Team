@@ -40,6 +40,7 @@ def show():
         if current_page > 1:
             if st.button("⬅️ 이전"):
                 st.session_state.faq_page -= 1
+                st.rerun()
 
     with col2:
         st.markdown(
@@ -51,3 +52,4 @@ def show():
         if current_page < total_pages:
             if st.button("다음 ➡️"):
                 st.session_state.faq_page += 1
+                st.rerun()
