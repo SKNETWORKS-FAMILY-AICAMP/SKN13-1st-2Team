@@ -99,13 +99,27 @@ def show():
     cols = st.columns(3)
     for i, (_, car) in enumerate(cars_df.iterrows()):
         with cols[i % 3]:
+            price_raw = car['price']
+            try:
+                price_val = float(price_raw)
+                if price_val >= 10000:
+                    eok = price_val // 10000
+                    man = price_val % 10000
+                    if man == 0:
+                        formatted_price = f"{int(eok)}억"
+                    else:
+                        formatted_price = f"{int(eok)}억 {int(man)}만원"
+                else:
+                    formatted_price = f"{int(price_val)}만원"
+            except:
+                formatted_price = price_raw  # 오류 시 원본 출력
             st.markdown(
                 f"""
                 <div style="text-align:center; border:1px solid #ddd; border-radius:12px; padding:10px; margin-bottom:20px;">
                     <img src="{car['image_url']}" style="width:100%; height:auto; border-radius:10px;" />
                     <div style="font-size:15px; font-weight:bold; margin-top:8px;">{car['name']}</div>
                     <div style="font-size:13px; color:#666;">연료: {car['fuel_type']}</div>
-                    <div style="font-size:13px; color:#000; font-weight:bold;">가격: {car['price']}만원</div>
+                    <div style="font-size:13px; color:#000; font-weight:bold;">가격: {formatted_price}</div>
                 </div>
                 """,
                 unsafe_allow_html=True

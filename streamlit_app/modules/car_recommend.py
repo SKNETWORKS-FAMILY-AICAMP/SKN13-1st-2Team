@@ -95,6 +95,21 @@ def show():
         st.markdown("### 🌟 추천 차량")
         cols = st.columns(5)
         for idx, (_, row) in enumerate(top_5.iterrows()):
+            # 가격 포맷팅: 억 단위 처리
+            try:
+                price_val = int(row['가격'])
+                if price_val >= 10000:
+                    eok = price_val // 10000
+                    man = price_val % 10000
+                    if man == 0:
+                        formatted_price = f"{eok}억"
+                    else:
+                        formatted_price = f"{eok}억 {man:,}만원"
+                else:
+                    formatted_price = f"{price_val:,}만원"
+            except:
+                formatted_price = row['가격']  # 혹시 오류 시 원본 표시
+
             with cols[idx]:
                 st.markdown(f"""
                     <div class="card">
@@ -102,6 +117,6 @@ def show():
                         <h5 class="car-title">{idx+1}위: {row['모델명']}</h5>
                         <p class="car-info">&nbsp;&nbsp;{row['연료']}</p>
                         <p class="car-info">&nbsp;&nbsp;{row['차종']}</p>
-                        <p class="car-info">&nbsp;&nbsp;{int(row['가격']):,}만원</p>
+                        <p class="car-info">&nbsp;&nbsp;{formatted_price}</p>
                     </div>
                 """, unsafe_allow_html=True)
