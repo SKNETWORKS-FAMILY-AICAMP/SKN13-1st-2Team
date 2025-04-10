@@ -32,7 +32,15 @@ def show():
 
     brands_df = get_brands()
 
+<<<<<<< HEAD
 # --- 브랜드 로고 출력 ---
+=======
+    # --- URL 파라미터에서 선택한 브랜드 확인 ---
+    query_params = st.query_params
+    selected_brand = query_params.get("brand", [None])
+
+    # --- 브랜드 로고 출력 ---
+>>>>>>> 9427f154bde2991e4f12be47b34045bf5eec8780
     st.markdown("### 🌟 브랜드 선택")
     for i in range(0, len(brands_df), 16):
         cols = st.columns(16)
