@@ -3,7 +3,29 @@
     
 
 ### 👋 DRMC(Don't Recall My Car)조 팀원소개
-<img src="img/구재회.png" alt="로고" width="200" height="150"/><img src="img/남궁건우.png" alt="로고" width="200" height="150"/><img src="img/이유나.png" alt="로고" width="200" height="150"/><img src="img/우지훈.png" alt="로고" width="200" height="150"/><img src="img/이석민.png" alt="로고" width="200" height="150"/>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="img/구재회.png" alt="로고" width="220" height="150"/><br>
+      <span style="font-size:16px;"><b>구재회</b></span>
+    </td>
+    <td align="center">
+      <img src="img/남궁건우.png" alt="로고" width="220" height="150"/>
+      <span style="font-size:16px;"><b>남궁건우</b></span>
+    </td>
+    <td align="center">
+      <img src="img/우지훈.png" alt="로고" width="220" height="150"/>
+      <span style="font-size:16px;"><b>우지훈</b></span>
+    <td align="center">
+      <img src="img/una.png" alt="로고" width="220" height="150"/>
+      <span style="font-size:16px;"><b>이유나</b></span>
+    <td align="center">
+      <img src="img/이석민.png" alt="로고" width="220" height="150"/>
+      <span style="font-size:16px;"><b>이석민</b></span>
+    </td>
+  </tr>
+</table>
 
 
 <팀원이름>
