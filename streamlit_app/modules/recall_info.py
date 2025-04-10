@@ -108,6 +108,7 @@ def show():
 
             name_counts = filtered["name"].value_counts().head(15)
             names = name_counts.index.tolist()
+            names = [name[:20] for name in names]
             counts = name_counts.values
             y_pos = np.arange(len(names))
 
