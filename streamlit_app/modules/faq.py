@@ -34,22 +34,22 @@ def show():
             st.write(f"👉 {row['답변']}")
 
     st.markdown("---")
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 8, 1])
 
     with col1:
         if current_page > 1:
-            if st.button("⬅️ 이전"):
+            if st.button("⬅&nbsp;&nbsp;&nbsp;&nbsp;이전"):
                 st.session_state.faq_page -= 1
                 st.rerun()
 
     with col2:
         st.markdown(
-            f"<div style='text-align:center;'>📄 페이지 {current_page} / {total_pages}</div>",
+            f"<div style='text-align:center;'>페이지 {current_page} / {total_pages}</div>",
             unsafe_allow_html=True
         )
 
     with col3:
         if current_page < total_pages:
-            if st.button("다음 ➡️"):
+            if st.button("다음&nbsp;&nbsp;&nbsp;&nbsp;➡"):
                 st.session_state.faq_page += 1
                 st.rerun()

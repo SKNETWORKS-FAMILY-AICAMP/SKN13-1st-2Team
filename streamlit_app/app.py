@@ -24,8 +24,8 @@ st.markdown("""
 
     /* 버튼 스타일 (예: 차량 보기) */
     div.stButton > button {
-        background-color: #f57c00;
-        color: white;
+        background-color: #fef4e3;
+        color: black;
         border: none;
         border-radius: 8px;
         padding: 0.5em 1em;
@@ -33,7 +33,7 @@ st.markdown("""
 
     /* 버튼 호버 스타일 */
     div.stButton > button:hover {
-        background-color: #e66900;
+        background-color: #F28500;
         color: white;
     }
 
