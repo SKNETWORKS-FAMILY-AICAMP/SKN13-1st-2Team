@@ -25,13 +25,15 @@ def get_all_cars():
 # --- Streamlit 페이지 ---
 def show():
     st.title("🚘 차량 브랜드 보기")
+
+    # --- 세션 상태 초기화 ---
+    if "selected_brand" not in st.session_state:
+        st.session_state.selected_brand = None
+
     brands_df = get_brands()
 
-    # --- URL 파라미터에서 선택한 브랜드 확인 ---
-    query_params = st.query_params
-    selected_brand = query_params.get("brand", [None])
-
     # --- 브랜드 로고 출력 ---
+
     st.markdown("### 🌟 브랜드 선택")
     for i in range(0, len(brands_df), 16):
         cols = st.columns(16)
@@ -39,22 +41,42 @@ def show():
             if i + j < len(brands_df):
                 brand = brands_df.iloc[i + j]
                 with cols[j]:
-                    st.markdown(
-                    f"""
-                    <div style="text-align:center;">
-                        <a href="?brand={brand['brand']}" style="display:inline-block; padding:2px; border:1px solid #ccc; border-radius:8px;">
-                            <img src="{brand['brand_img']}" style="width:45px; height:auto;" />
-                        </a>
-                        <div style="font-size:11px; margin-top:4px; color:#777;">{brand['brand']}</div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                    # 로고를 테두리에 맞게 감싸고 클릭 가능하게 form 활용
+                    form_key = f"form_{brand['brand']}"
+                    with st.form(form_key):
+                        st.markdown(
+                            f"""
+                            <div style="text-align:center;">
+                                <div style="
+                                    display:inline-block;
+                                    width:45px;
+                                    height:45px;
+                                    border:1px solid #ccc;
+                                    border-radius:8px;
+                                    overflow:hidden;
+                                    padding:2px;
+                                    box-sizing:border-box;
+                                ">
+                                    <img src="{brand['brand_img']}" style="width:45px; height:45px;" />
+                                </div>
+                                <div style="font-size:11px; margin-top:4px; color:#777;">{brand['brand']}</div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                        if st.form_submit_button(" ", use_container_width=True):
+                            st.session_state.selected_brand = brand['brand']
+                        
+    # --- 전체보기 초기화 버튼 ---
+    st.markdown(" ")
+    if st.session_state.selected_brand:
+        if st.button("🔄 전체 차량 보기"):
+            st.session_state.selected_brand = None
 
     # --- 차량 리스트 출력 ---
-    if selected_brand:
-        st.markdown(f"### 🚗 {selected_brand} 차량 리스트")
-        cars_df = get_cars_by_brand(selected_brand)
+    if st.session_state.selected_brand:
+        st.markdown(f"### 🚗 {st.session_state.selected_brand} 차량 리스트")
+        cars_df = get_cars_by_brand(st.session_state.selected_brand)
     else:
         st.markdown("### 🌟 전체 차량 리스트")
         cars_df = get_all_cars()
