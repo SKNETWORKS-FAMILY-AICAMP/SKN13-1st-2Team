@@ -74,6 +74,7 @@ def get_recommendations(user):
             "연료": car["fuel_type"],
             "차종": car["car_type"],
             "가격": car["price"],
+            "이미지" : car["image_url"],
             "기본점수": b_score,
             "신뢰도점수": t_score,
             "총점": total
