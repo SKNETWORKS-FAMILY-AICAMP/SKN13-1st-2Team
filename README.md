@@ -58,14 +58,17 @@ ex)
 - vscode
 - git
 
+
 ## 🛜 WBS
-![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
+![image](https://github.com/user-attachments/assets/86219b60-f072-443b-a58c-14855ddc6f29)
 
 ## 📜 ERD
 ![car_ERD찐막](https://github.com/user-attachments/assets/43425f5b-f7ad-4533-8949-9c157c1d3730)
 
 ## 📊 데이터 시각화 플렛폼
-![image](https://github.com/user-attachments/assets/86219b60-f072-443b-a58c-14855ddc6f29)
+ex)
+![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
+
 
 
 
