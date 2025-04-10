@@ -29,7 +29,7 @@ def show():
 
     # --- URL 파라미터에서 선택한 브랜드 확인 ---
     query_params = st.query_params
-    selected_brand = query_params.get("brand", [None])[0]
+    selected_brand = query_params.get("brand", [None])
 
     # --- 브랜드 로고 출력 ---
     st.markdown("### 🌟 브랜드 선택")
