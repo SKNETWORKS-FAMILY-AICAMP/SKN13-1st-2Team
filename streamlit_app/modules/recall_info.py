@@ -56,7 +56,7 @@ def load_data():
 
 # 메인 함수 정의
 def show():
-    st.header("🚗 결함 정보 및 리콜 통계")
+    st.title("🚗 결함 정보 및 리콜 통계")
 
     df = load_data()
  

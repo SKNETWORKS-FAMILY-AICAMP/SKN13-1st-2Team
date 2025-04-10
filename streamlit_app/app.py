@@ -65,6 +65,7 @@ with st.sidebar:
         }
     )
 
+
 # ✅ 라우팅 처리
 if selected == "차량 보기":
     car_view.show()
