@@ -2,11 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
+from matplotlib.ticker import MaxNLocator
+import plotly.graph_objects as go
 import numpy as np
 from sqlalchemy import create_engine
 import pymysql
 from utils.db import get_connection  # DB 연결 함수 가져오기
-from matplotlib.ticker import MaxNLocator
 import io
 
 
@@ -58,7 +59,7 @@ def show():
     st.header("🚗 결함 정보 및 리콜 통계")
 
     df = load_data()
-    
+ 
     # 문자열 정규화 (str.lower, trim, space remove)
     df["brand_clean"] = df["brand"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
     df["name_clean"] = df["name"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
@@ -129,9 +130,10 @@ def show():
             st.warning(f"'{final_query}'에 대한 리콜 정보가 없습니다.")
     
     else:
-        # 검색어 없을 때: 도넛형 파이차트 표시
+
+
         st.subheader("🥧 브랜드별 리콜 차량 수 비율 (상위 15개 + 기타)")
-    
+
         # 전체 브랜드별 리콜 차량 수 (차종 기준)
         brand_total = df.groupby("brand")["name"].nunique().sort_values(ascending=False)
 
@@ -143,39 +145,30 @@ def show():
         if others > 0:
             pie_data["기타"] = others
 
-        # 파이차트 그리기 (도넛형 + 라벨 안 겹치게)
-        fig, ax = plt.subplots(figsize=(5, 5))
-        wedges, texts, autotexts = ax.pie(
-            pie_data.values,
-            autopct='%1.1f%%',
-            startangle=140,
-            counterclock=False,
-            textprops={'fontsize': 9},
-            wedgeprops=dict(width=0.7)  # 도넛 스타일
-        )
-        ax.axis("equal")
+        # Plotly 도넛형 파이차트 생성
+        fig = go.Figure(data=[go.Pie(
+            labels=pie_data.index,
+            values=pie_data.values,
+            hole=0.4,  # 도넛형
+            textinfo='percent+label',  # 퍼센트와 라벨 둘 다 표시
+            insidetextorientation='auto'
+        )])
 
-        for autotext in autotexts:
-            autotext.set_position((autotext.get_position()[0] * 1.3,  # x를 1.4배 멀리
-                                   autotext.get_position()[1] * 1.3)) # y를 1.4배 멀리
-        
-        # 오른쪽에 범례로 브랜드명 정리
-        ax.legend(
-            wedges,
-            pie_data.index,
-            title="브랜드",
-            loc="center left",
-            bbox_to_anchor=(1, 0.5),
-            fontsize=9,
-            title_fontsize=10
+        fig.update_layout(
+            width=700,
+            height=500,
+            margin=dict(l=50, r=150, t=50, b=50),
+            legend=dict(
+                title="브랜드",
+                x=1.05,  # 오른쪽에 정렬
+                y=0.5,
+                font=dict(size=10),
+                title_font=dict(size=11)
+            )
         )
 
-        # 메모리에 이미지 저장 후 Streamlit에 출력
-        buf = io.BytesIO()
-        plt.savefig(buf, format="png", dpi=100, bbox_inches="tight", transparent=True)
-        buf.seek(0)
-        st.image(buf, width=750)  # 화면에 적당한 크기로 표시
-
+        # Streamlit에 출력
+        st.plotly_chart(fig, use_container_width=True)
         # 전체 브랜드-차종 목록
         st.subheader("📋 전체 브랜드-차종 목록")
         st.dataframe(df[["brand", "name"]].drop_duplicates().sort_values(by="brand"))
