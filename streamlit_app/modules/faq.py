@@ -7,12 +7,8 @@ POSTS_PER_PAGE = 5
 
 def get_faq_data():
     conn = get_connection()
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT question AS 질문, answer AS 답변 FROM car_faq")
-        result = cursor.fetchall()
-    conn.close()
-    return result
-
+    query = "SELECT question AS 질문, answer AS 답변 FROM car_faq"
+    return pd.read_sql(query, conn)
 
 def show():
     st.title("❓ FAQ")
@@ -28,8 +24,8 @@ def show():
     current_page = st.session_state.faq_page
     start_idx = (current_page - 1) * POSTS_PER_PAGE
     end_idx = start_idx + POSTS_PER_PAGE
-    page_data = faq_data[start_idx:end_idx]
-
+    page_data = faq_data[start_idx:end_idx].to_dict(orient="records")
+    print(page_data)
     for row in page_data:
         with st.expander(f"Q. {row['질문']}"):
             st.write(f"👉 {row['답변']}")

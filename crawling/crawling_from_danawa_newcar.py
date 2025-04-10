@@ -96,8 +96,8 @@ for url in url_list:
             # 브랜드 이름 정리
             if "르노" in brand:
                 brand = "르노"
-            if brand == "제네시스":
-                brand = "현대"
+            elif brand == "랜드로버":
+                brand = "재규어랜드로버"
             
             # 상세 페이지 URL과 가격 추출
             detail_url = price = None
