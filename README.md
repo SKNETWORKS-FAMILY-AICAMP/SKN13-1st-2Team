@@ -1,7 +1,20 @@
-# SKN13-1st-2Team
-SK 네트웍스 AI과정 1차 프로젝트
+#### SKN13-1st-2Team
+ - SK 네트웍스 AI과정 1차 프로젝트
 
-###목차
+## 0. 😀 팀 소개
+팀명 : DSMY(Don't Recall My Car)
+![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
+
+![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
+<팀원들 사진첨부>
+
+|제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
+|:---:|:---:|:---:|:---:|:---:|
+|내용 1|내용 2|내용 3|내용 4|내용 5|
+|내용 6|내용 7|내용 8|내용 9|내용 10|
+
+
+### 목차
 
 1. 개요
    - 프로젝트 필요성
@@ -17,17 +30,7 @@ SK 네트웍스 AI과정 1차 프로젝트
 
 
 
-## 0. 😀 팀 소개
-팀명 : DSMY(Don't Recall My Car)
-![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
-![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
-<팀원들 사진첨부>
-
-|제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
-|:---:|:---:|:---:|:---:|:---:|
-|내용 1|내용 2|내용 3|내용 4|내용 5|
-|내용 6|내용 7|내용 8|내용 9|내용 10|
 
 ### 🖥️ 프로젝트
 
