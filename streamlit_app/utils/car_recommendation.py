@@ -15,28 +15,65 @@ user = {
 # ✅ 기본 적합도 점수 함수
 def basic_score(user, car):
     score = 0
+    preferred_type = user["preferred_type"]
+    car_type = car["car_type"]
+    
+    truck_types = ["경트럭", "소형트럭", "중형트럭"]
+    special_types = ["소형버스", "픽업/밴", "승합"]
 
-    if user["preferred_type"] == car["car_type"]:
-        score += 5
+    # ✅ 차종에 따른 가중치 조정
+    if preferred_type in truck_types:
+        if preferred_type == car_type:
+            score += 9  # 정확히 일치하는 트럭
+        elif car_type in truck_types:
+            score += 3   # 같은 트럭 계열이지만 다름
+        else:
+            score -= 5   # 트럭 선호자지만 트럭이 아님
+
+    elif preferred_type in special_types: # 특수 차종(픽업/밴, 소형버스 등)
+        if preferred_type == car_type:
+            score += 5
+        else:
+            score -= 5
+
+    else:
+        if car_type in truck_types or car_type in special_types:
+            score -= 5     # 트럭이나 특수차종에게는 마이너스
+        elif preferred_type == car_type:
+            score += 5     # 일반적인 차종 선호와 일치
+        else:
+            score += 2      # 다른 차종이지만 비슷한 카테고리 (SUV, 세단 등)
+
+
+    # ✅ 연료 타입 선호
     if user["preferred_fuel"] == car["fuel_type"]:
-        score += 3
+        score += 1
 
-    # ✅ 가격이 범위 안에 들어오는 경우 점수 부여
+    # ✅ 예산 범위
     price = pd.to_numeric(car["price"], errors="coerce")
-   
-    if not pd.isna(price) and user["budget_min"] <= price <= user["budget_max"]:
-        score += 2
-    if user["num_kids"] >= 2 and car["car_type"] in ["SUV", "대형", "MPV"]:
-        score += 3
+    if not pd.isna(price):
+        if user["budget_min"] <= price <= user["budget_max"]:
+            score += 3
+        elif price < user["budget_min"]:
+            score += 2
+        else:
+            minscore = (user['budget_max'] / price)
+            score -= minscore
+            
+    # ✅ 자녀 수에 따른 대형차 선호
+    if user["num_kids"] >= 2 and car_type in ["SUV", "대형", "MPV"]:
+        score += 1
 
-    korean_brands = ["현대", "기아", "제네시스", "쉐보레", "쌍용", "르노삼성"]
+    # ✅ 브랜드 선호 (국산 vs 해외)
+    korean_brands = ["기아", "대창모터스", "디피코", "모빌리티네트웍스", "쎄보모빌리티",
+                     "이비온", "자일자동차", "제네시스", "제이스모빌리티", "현대"]
+    
     if user["brand_origin"] == "국산" and car["brand"] in korean_brands:
         score += 2
     elif user["brand_origin"] == "해외" and car["brand"] not in korean_brands:
         score += 2
 
     return score
-
 # ✅ 리콜 기반 신뢰도 점수 함수
 def trust_score(recalls_df, brand, name):
     entries = recalls_df[(recalls_df["brand"] == brand) & (recalls_df["name"] == name)]
