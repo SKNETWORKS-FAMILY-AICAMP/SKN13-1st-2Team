@@ -1,3 +1,5 @@
+# car_recommend.py
+
 import streamlit as st
 import pandas as pd
 from utils.car_recommendation import get_recommendations
@@ -5,12 +7,50 @@ from utils.db import get_connection
 
 def show():
     st.title("🚗 차량 조건을 선택하세요")
+    st.write("이 정보는 차의 선호도 순위와 결함 정보를 통해 작성되었습니다!")
 
-    # ✅ DB 연결 및 고유값 추출
+    # ✅ hover 효과용 스타일
+    st.markdown("""
+        <style>
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 6px;
+            background-color: #fff;
+            height: 300px;  /* ✅ 유지 */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: all 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .car-image {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-bottom: 6px;
+        }
+        .car-title {
+            margin: 4px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .car-info {
+            margin: 2px 0;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # ✅ DB 연결
     engine = get_connection()
     cars_df = pd.read_sql("SELECT * FROM cars", engine)
 
-    # ✅ 슬라이더용 범위 설정
+    # ✅ 슬라이더 및 필터
     price_min = 1000
     price_max = 10000
     real_max_price = int(pd.to_numeric(cars_df["price"], errors="coerce").max())
@@ -20,18 +60,7 @@ def show():
 
     with st.form("car_conditions"):
         st.markdown("#### 💡 조건 입력")
-
-        # ✅ 가격대 슬라이더
-        price_range = st.slider(
-            "가격대 (천 만원)",
-            min_value=price_min,
-            max_value=(price_max),
-            value=(3000, 5000),
-            step=500
-        )  
-
-
-        # ✅ 10000+ 처리
+        price_range = st.slider("가격대 (천 만원)", min_value=price_min, max_value=price_max, value=(3000, 5000), step=500)
         adjusted_max_price = real_max_price if price_range[1] >= price_max else price_range[1]
 
         col1, col2 = st.columns(2)
@@ -61,8 +90,18 @@ def show():
         st.success("✅ 조건이 적용되었습니다. 추천 차량 리스트를 확인하세요.")
         result_df = get_recommendations(user_input)
 
-        # ✅ 점수 컬럼 제거 및 상위 5개만 추출
-        display_df = result_df[["모델명", "브랜드", "연료", "차종", "가격"]].head(5)
-        display_df.index = [f"{i+1}위" for i in range(len(display_df))]
+        top_5 = result_df[["모델명", "브랜드", "연료", "차종", "가격", "이미지"]].head(5)
 
-        st.dataframe(display_df, use_container_width=True)
+        st.markdown("### 🌟 추천 차량")
+        cols = st.columns(5)
+        for idx, (_, row) in enumerate(top_5.iterrows()):
+            with cols[idx]:
+                st.markdown(f"""
+                    <div class="card">
+                        <img src="{row['이미지']}" class="car-image">
+                        <h5 class="car-title">{idx+1}위: {row['모델명']}</h5>
+                        <p class="car-info">&nbsp;&nbsp;{row['연료']}</p>
+                        <p class="car-info">&nbsp;&nbsp;{row['차종']}</p>
+                        <p class="car-info">&nbsp;&nbsp;{int(row['가격']):,}만원</p>
+                    </div>
+                """, unsafe_allow_html=True)
