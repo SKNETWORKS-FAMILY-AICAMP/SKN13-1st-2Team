@@ -3,12 +3,12 @@
 
 ##👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
 
-<img src="img/구재회.png" alt="로고" width="300"/>
+<img src="img/구재회.png" alt="로고" width="200" height="150"/>
+<img src="img/이유나.png" alt="로고" width="200" height="150"/>
+<img src="img/남궁건우.png" alt="로고" width="200" height="150"/>
+<img src="img/우지훈.png" alt="로고" width="200" height="150"/>
+<img src="img/이석민.png" alt="로고" width="200" height="150"/>
 
-<img src="[logo.png](https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN13-1st-2Team/blob/main/%EA%B5%AC%EC%9E%AC%ED%9A%8C.png)" alt="로고" width="300"/>
-![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
-
-![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
 <팀원들 사진첨부>
 <팀원이름>
 |제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
