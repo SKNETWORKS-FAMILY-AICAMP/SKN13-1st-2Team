@@ -3,7 +3,9 @@ SK 네트웍스 AI과정 1차 프로젝트
 
 ## 0. 😀 팀 소개
 팀명 : DSMY(Don't Recall My Car)
+![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
+![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
 <팀원들 사진첨부>
 
 |제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
@@ -28,12 +30,13 @@ SK 네트웍스 AI과정 1차 프로젝트
 - git
 
 ## 3. UI-WireFrame
-- Figma screenshot
+![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
 
 ## 4. ERD 제작
-- dbdiagram 이미지 첨부
+![car_ERD찐막](https://github.com/user-attachments/assets/43425f5b-f7ad-4533-8949-9c157c1d3730)
 
 ## 5. 요구사항 명세서
-- 구글 sheet이미지 첨부
+![image](https://github.com/user-attachments/assets/86219b60-f072-443b-a58c-14855ddc6f29)
+
 
 
