@@ -1,13 +1,13 @@
 #### SKN13-1st-2Team
  - SK 네트웍스 AI과정 1차 프로젝트
 
-## 0. 👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
+##👋🏻 DRMC(Don't Recall My Car)조 팀원소개 
 
 ![image](https://github.com/user-attachments/assets/5b7e493d-b3af-4f9d-9312-56be78707315)
 
 ![image](https://github.com/user-attachments/assets/f66d6c49-09cd-42da-9bec-374fbe51a5f0)
 <팀원들 사진첨부>
-
+<팀원이름>
 |제목 셀1|제목 셀2|제목 셀3|제목 셀4|제목 셀5|
 |:---:|:---:|:---:|:---:|:---:|
 |내용 1|내용 2|내용 3|내용 4|내용 5|
@@ -17,58 +17,61 @@
 ### 목차
 
 1. 개요
+   - 프로젝트 소개
    - 프로젝트 필요성
    - 프로젝트 목표
 
 2. 프로젝트 내용
    - 사용 기술
-   - ERD
    - WBS
+   - ERD
    - 데이터 시각화 플렛폼
 
 3. 한줄 회고
 
 
+### 🖥️ 개요
 
-
-
-### 🖥️ 프로젝트
-
-##🗓️ 개발기간
+## 🗓️ 개발기간
 2025.04.09 ~ 2025.04.10 (총 2일)
 
-## 1. 📩 프로젝트 개요
-
-   # 🚘 프로젝트 소개
-
---- 프로젝트 필요성
-
---- 프로젝트 목표
-
-
+## 💁‍♀️ 프로젝트 소개
+ex)
 - 소비자의 관점에서 합리적인 자동차 구매를 위해
 일반적으로 자동차 검색 사이트에서 제공하지 않는 리콜 정보 제공을 기반으로
 차량 추천 서비스 제공
 
+## 📩 프로젝트 필요
 
-## 2. 🛜 프로젝트 기술스택<이미지형식으로넣기>
-- python
-- mysql
-- beatifulsoup
-- selenium
-- figma
-- streamlit
-- vscode
-- git
+## 🚀 프로젝트 목표
 
-## 3. UI-WireFrame
-![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
 
-## 4. ERD 제작
-![car_ERD찐막](https://github.com/user-attachments/assets/43425f5b-f7ad-4533-8949-9c157c1d3730)
 
-## 5. 요구사항 명세서
+### 🖥️ 프로젝트 내용
+
+## 🛠️ 프로젝트 기술스택
+![image](https://github.com/user-attachments/assets/8613413c-7936-4b3f-86c8-ce5018a6bb0d)
+![image](https://github.com/user-attachments/assets/701889c5-6373-433c-b832-69f82dfdc4f7)
+![image](https://github.com/user-attachments/assets/64c0ee15-c515-4e7f-8ee6-84b63cfc7144)
+![image](https://github.com/user-attachments/assets/ab611b20-e479-4d0e-9a3d-07526607f4ae)
+![image](https://github.com/user-attachments/assets/b4865a0e-d692-4e98-8de9-94c485df6fb8)
+![image](https://github.com/user-attachments/assets/bfcaa40d-1ca9-46aa-8017-5d258c816e4b)
+
+## 🛜 WBS
 ![image](https://github.com/user-attachments/assets/86219b60-f072-443b-a58c-14855ddc6f29)
 
+## 📜 ERD
+![car_ERD찐막](https://github.com/user-attachments/assets/43425f5b-f7ad-4533-8949-9c157c1d3730)
+
+## 📊 데이터 시각화 플렛폼
+ex)
+![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
+
+💭 한줄 회고
+  - 남궁건우(팀장) : 
+  - 우재희 : 
+  - 우지훈 : 
+  - 이유나 : 
+  - 이석민 : 
 
 
