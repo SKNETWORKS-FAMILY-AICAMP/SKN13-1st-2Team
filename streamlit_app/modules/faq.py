@@ -12,6 +12,7 @@ def get_faq_data():
         result = conn.execute(query)
         return result.mappings().all()  # 바로 리스트로 변환
 
+
 def show():
     st.title("❓ FAQ")
     st.write("차량 관련 자주 묻는 질문과 답변을 확인하세요!")

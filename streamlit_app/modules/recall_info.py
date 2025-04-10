@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
+from sqlalchemy import create_engine
 import pymysql
 from utils.db import get_connection  # DB 연결 함수 가져오기
 
@@ -13,7 +14,7 @@ matplotlib.rcParams['axes.unicode_minus'] = False
 
 # 브랜드 매핑
 BRAND_MAPPING = {
-    "bmw": "비엠더블유",
+    "bmw": "BMW",
     "kia": "기아",
     "hyundai": "현대",
     "benz": "벤츠",
@@ -24,7 +25,6 @@ BRAND_MAPPING = {
     "renault": "르노코리아",
     "volkswagen": "폭스바겐그룹",
 }
-
 
 # DB에서 데이터 로드
 @st.cache_data(show_spinner=False)
@@ -44,7 +44,7 @@ def load_data():
         FROM recalls
     """
     df = pd.read_sql(query, con=conn)
-    print(df)
+    
     # conn.close()
 
     # ❗ 잘못 들어간 컬럼명 행 제거 (자동 정제)
@@ -67,13 +67,12 @@ def show():
     # 매핑된 브랜드 이름으로 변환 후 정규화
     mapped_input = BRAND_MAPPING.get(search_input, search_input)
     mapped_input_clean = mapped_input.strip().lower().replace(" ", "")
-
+    
     # 검색어 통해 brand/name에 포함되는 데이터 목록 보이기
     matches = df[
         df["brand_clean"].str.contains(mapped_input_clean, na=False) |
         df["name_clean"].str.contains(mapped_input_clean, na=False)
     ]
-
     # 리스트업 표시 (autocomplete)
     unique_matches = pd.concat([
         matches["brand"], matches["name"]
@@ -84,17 +83,15 @@ def show():
         selected_option = st.selectbox("🔎 추천 항목을 선택해주세요", ["(선택 안 함)"] + unique_matches)
         if selected_option == "(선택 안 함)":
             selected_option = None
-
     # 리스트에서 선택한 검색어 또는 입력한 검색어
     final_query = selected_option.strip().lower().replace(" ", "") if selected_option else mapped_input_clean
-
+    print(final_query)
     # 검색 결과 필터링
     if final_query:
         filtered = df[
-            df["brand_clean"].str.contains(final_query, na=False) |
-            df["name_clean"].str.contains(final_query, na=False)
+            df["brand_clean"].str.contains(final_query, na=False, regex=False) |    #데이터 내부에 소괄호 등이 들어가있을 때 정규식으로 인식하지 않도록 regex=Fasle 옵션 추가
+            df["name_clean"].str.contains(final_query, na=False, regex=False)
         ]
-
         if not filtered.empty:
             st.success(f"🔎 '{final_query}'에 대한 리콜 정보 {len(filtered)}개를 찾았습니다.")
             st.dataframe(filtered["brand name recall_type reason".split()])
