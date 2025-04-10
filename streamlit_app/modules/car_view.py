@@ -80,7 +80,7 @@ def show():
     if st.session_state.get("selected_brand"):
         if st.button("🔄 전체 차량 보기"):
             st.session_state.selected_brand = None
-            st.experimental_set_query_params()  # URL 초기화
+            st.query_params.clear()  # URL 초기화
 
     # 차량 리스트
     if st.session_state.get("selected_brand"):
