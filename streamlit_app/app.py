@@ -8,6 +8,43 @@ from modules import car_view, car_recommend, recall_info, faq
 # 페이지 설정
 st.set_page_config(page_title="신차 검색 서비스", layout="wide")
 
+st.markdown("""
+    <style>
+    /* 사이드바 배경 */
+    section[data-testid="stSidebar"] {
+        background-color: #fef4e3;  /* 흰색 유지 */
+    }
+
+    /* 사이드바 제목 */
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2, 
+    section[data-testid="stSidebar"] h3 {
+        color: #fef4e3;  /* 주황색 */
+    }
+
+    /* 버튼 스타일 (예: 차량 보기) */
+    div.stButton > button {
+        background-color: #f57c00;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+    }
+
+    /* 버튼 호버 스타일 */
+    div.stButton > button:hover {
+        background-color: #e66900;
+        color: white;
+    }
+
+    /* 선택된 텍스트 강조 색상 */
+    .css-1v0mbdj {
+        color: #f57c00;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # ✅ 사이드바 메뉴 구성 (세션 상태 제거)
 with st.sidebar:
     st.image("img/drmc_logo.png", width=200)  # ✅ 경로 지정
