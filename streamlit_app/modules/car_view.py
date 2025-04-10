@@ -78,15 +78,21 @@ def show():
 
     # 전체 보기 버튼
     if st.session_state.get("selected_brand"):
+        st.write("")
+        st.write("")
         if st.button("🔄 전체 차량 보기"):
             st.session_state.selected_brand = None
             st.query_params.clear()  # URL 초기화
 
     # 차량 리스트
     if st.session_state.get("selected_brand"):
+        st.write("")
+        st.write("")
         st.markdown(f"### 🚗 {st.session_state.selected_brand} 차량 리스트")
         cars_df = get_cars_by_brand(st.session_state.selected_brand)
     else:
+        st.write("")
+        st.write("")
         st.markdown("### 🌟 전체 차량 리스트")
         cars_df = get_all_cars()
 
