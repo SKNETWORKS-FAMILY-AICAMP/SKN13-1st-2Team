@@ -121,7 +121,7 @@ def show():
             ax.set_yticks(y_pos)
             ax.set_yticklabels(names)
             ax.set_xlabel("리콜 건수")
-            ax.set_ylabel("차량 이름")
+            # ax.set_ylabel("차량 이름")
             ax.tick_params(labelsize=9)
             ax.xaxis.set_major_locator(MaxNLocator(integer=True))  # x축 정수 눈금
             ax.invert_yaxis()
@@ -171,4 +171,6 @@ def show():
         st.plotly_chart(fig, use_container_width=True)
         # 전체 브랜드-차종 목록
         st.subheader("📋 전체 브랜드-차종 목록")
-        st.dataframe(df[["brand", "name"]].drop_duplicates().sort_values(by="brand"))
+        df_display = df[["brand", "name"]].drop_duplicates().sort_values(by="brand").reset_index(drop=True)
+        df_display.index = df_display.index + 1  # 인덱스를 1부터 시작
+        st.dataframe(df_display)
