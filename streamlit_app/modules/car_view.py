@@ -109,7 +109,7 @@ def show():
     if st.session_state.get("selected_brand"):
         st.write("")
         st.write("")
-        if st.button("🔄 전체 차량 보기"):
+        if st.button("📋 전체 차량 보기"):
             st.session_state.selected_brand = None
             st.query_params.clear()  # URL 초기화
 
