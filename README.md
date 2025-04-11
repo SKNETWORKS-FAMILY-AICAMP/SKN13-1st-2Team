@@ -158,7 +158,7 @@
    - 데이터 출처
      - [다나와자동차](https://auto.danawa.com/)
      - [소비자24](https://www.consumer.go.kr/user/ftc/consumer/recallInfo/629/selectRecallInfoInternalList.do?searchCondition1=0301)
-## (5) backend - DB, ERD
+## (5) BACKEND - DB, ERD
 ### 1) 🧹 데이터 정제 과정
 
 #### 📌 다나와자동차
