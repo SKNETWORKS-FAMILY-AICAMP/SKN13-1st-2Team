@@ -87,7 +87,7 @@
 
 <table>
   <tr>
-    <td align="left" valign="top">협업</td>
+    <td align="left">협업</td>
     <td align="left">
       <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white">
       <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -95,7 +95,7 @@
     </td>
   </tr>
   <tr>
-    <td align="right" valign="top"><b>프론트엔드</b></td>
+    <td align="left">프론트엔드</td>
     <td align="left">
       <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
       <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white">
