@@ -18,7 +18,7 @@
       <span style="font-size:16px;"><b>남궁건우</b></span>
     </td>
     <td align="center">
-      <img src="img/우지훈.png" alt="로고" width="200" height="150"/>
+      <img src="img/jihun.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>우지훈</b></span>
     <td align="center">
       <img src="img/una.png" alt="로고" width="200" height="150"/>
