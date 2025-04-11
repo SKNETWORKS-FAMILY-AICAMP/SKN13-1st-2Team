@@ -74,7 +74,7 @@
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=Selenium&logoColor=white"/>
-![image](https://github.com/user-attachments/assets/b4865a0e-d692-4e98-8de9-94c485df6fb8)
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
 ![image](https://github.com/user-attachments/assets/bfcaa40d-1ca9-46aa-8017-5d258c816e4b)
 
 <br>
