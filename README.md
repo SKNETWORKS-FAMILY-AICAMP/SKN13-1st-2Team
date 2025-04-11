@@ -27,7 +27,7 @@
       <img src="img/jihun.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>우지훈</b></span><br>
       <a href="https://github.com/yuna-id">
-        <img src="https://img.shields.io/badge/GitHub-이유나-pink?logo=github" alt="이유나 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-우지훈-pink?logo=github" alt="https://github.com/WooZhoon"/>
       </a>
     <td align="center">
       <img src="img/una.png" alt="로고" width="200" height="150"/>
