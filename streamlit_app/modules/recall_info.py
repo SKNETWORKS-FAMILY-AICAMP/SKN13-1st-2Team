@@ -11,9 +11,9 @@ from utils.db import get_connection  # DB 연결 함수 가져오기
 import io
 
 
-# 한국어 폰트 설정
-matplotlib.rc('font', family='Malgun Gothic')
-matplotlib.rcParams['axes.unicode_minus'] = False
+# # 한국어 폰트 설정
+# matplotlib.rc('font', family='Malgun Gothic')
+# matplotlib.rcParams['axes.unicode_minus'] = False
 
 # 브랜드 매핑
 BRAND_MAPPING = {
@@ -65,7 +65,7 @@ def show():
     df["name_clean"] = df["name"].astype(str).str.strip().str.replace(r"\s+", "", regex=True).str.lower()
 
     # 검색어 입력
-    search_input = st.text_input("🔍 브랜드 또는 차종 입력", placeholder="BMW, 기아, K5 등")\
+    search_input = st.text_input("🔍 브랜드 또는 차종 입력", placeholder="기아, 현대, BMW 등")\
         .strip().lower().replace(" ", "")
 
     # 검색어가 있을 때만 아래 실행
@@ -161,7 +161,7 @@ def show():
 
         fig.update_layout(
             width=900,
-            height=800,
+            height=900,
             margin=dict(l=50, r=150, t=50, b=50),
             legend=dict(
                 title="브랜드",
