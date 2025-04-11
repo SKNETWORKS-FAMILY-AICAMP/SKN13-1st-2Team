@@ -142,13 +142,17 @@
   기초적인 streamlit 화면 구성을 figma를 통해 작업
 </p>
 <h3>2. Web (Streamlit)</h3>
-<p align = "left">
+<p align="left">
   <img src="img/폴더 구조.png" alt="폴더 구조"/><br>
-  - 메인 앱은 `app.py`에서 구성하며, 각 기능 페이지(`car_view`, `car_recommend`, `recall_info`, `faq`)를 라우팅하여 연결함
-  - 각 페이지는 역할에 맞는 UI와 데이터 처리를 분리하여 설계
-  - `utils` 폴더에는 공통 로직을 모아 관리, 예: DB 연결 모듈 (`db.py`)
-  - 차량 추천 알고리즘은 `utils/car_recommendation.py`로 분리하여 `car_recommend`에서 호출
 </p>
+
+<ul align="left">
+  <li>메인 앱은 <code>app.py</code>에서 구성하며, 각 기능 페이지(<code>car_view</code>, <code>car_recommend</code>, <code>recall_info</code>, <code>faq</code>)를 라우팅하여 연결함</li>
+  <li>각 페이지는 역할에 맞는 UI와 데이터 처리를 분리하여 설계</li>
+  <li><code>utils</code> 폴더에는 공통 로직을 모아 관리, 예: DB 연결 모듈 (<code>db.py</code>)</li>
+  <li>차량 추천 알고리즘은 <code>utils/car_recommendation.py</code>로 분리하여 <code>car_recommend</code>에서 호출</li>
+</ul>
+
 
 ## (4) BACKEND - crawling
    - 데이터 출처
