@@ -13,21 +13,21 @@
       <img src="img/구재회.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>구재회</b></span><br>
       <a href="https://github.com/jaehoi-koo">
-        <img src="https://img.shields.io/badge/GitHub-jaehoi--koo-pink?logo=github" alt="구재회 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-jaehoi--koo-red?logo=github" alt="구재회 GitHub"/>
       </a>
     </td>
     <td align="center">
       <img src="img/남궁건우.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>남궁건우</b></span><br>
       <a href="https://github.com/NGGW519">
-        <img src="https://img.shields.io/badge/GitHub-NGGW519-pink?logo=github" alt="남궁건우 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-NGGW519-yellow?logo=github" alt="남궁건우 GitHub"/>
       </a>
     </td>
     <td align="center">
       <img src="img/jihun.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>우지훈</b></span><br>
       <a href="https://github.com/WooZhoon">
-        <img src="https://img.shields.io/badge/GitHub-WooZhoon-pink?logo=github" alt="우지훈 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-WooZhoon-blue?logo=github" alt="우지훈 GitHub"/>
       </a>
     <td align="center">
       <img src="img/una.png" alt="로고" width="200" height="150"/>
@@ -39,7 +39,7 @@
       <img src="img/이석민.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>이석민</b></span><br>
       <a href="https://github.com/seokmin-KK">
-        <img src="https://img.shields.io/badge/GitHub-seokmin--KK-pink?logo=github" alt="이석민 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-seokmin--KK-green?logo=github" alt="이석민 GitHub"/>
       </a>
     </td>
   </tr>
