@@ -136,12 +136,12 @@
 <br/><br/>
 
 ## (3) FRONTEND
-<h3>1. Figma</h3>
+<h4>1. Figma</h4>
 <p align = "left">
   <img src="img/피그마.png" alt="피그마 화면"/><br>
   기초적인 streamlit 화면 구성을 figma를 통해 작업
 </p>
-<h3>2. Web (Streamlit)</h3>
+<h4>2. Web (Streamlit)</h4>
 <p align="left">
   <img src="img/폴더 구조.png" alt="폴더 구조"/><br>
 </p>
