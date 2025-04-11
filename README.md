@@ -3,7 +3,6 @@
   - ### SK 네트웍스 AI과정 1차 프로젝트
 <br>
 <br>
-
     
 
 ### 👋 DRMC(Don't Recall My Car)조 팀원소개
@@ -19,7 +18,7 @@
       <span style="font-size:16px;"><b>남궁건우</b></span>
     </td>
     <td align="center">
-      <img src="img/우지훈.png" alt="로고" width="200" height="150"/>
+      <img src="img/jihun.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>우지훈</b></span>
     <td align="center">
       <img src="img/una.png" alt="로고" width="200" height="150"/>
@@ -69,14 +68,23 @@
 
 ### 🛠️ 프로젝트 기술스택
 
-<br>
-
-![image](https://github.com/user-attachments/assets/8613413c-7936-4b3f-86c8-ce5018a6bb0d)
-![image](https://github.com/user-attachments/assets/701889c5-6373-433c-b832-69f82dfdc4f7)
-![image](https://github.com/user-attachments/assets/64c0ee15-c515-4e7f-8ee6-84b63cfc7144)
-![image](https://github.com/user-attachments/assets/ab611b20-e479-4d0e-9a3d-07526607f4ae)
-![image](https://github.com/user-attachments/assets/b4865a0e-d692-4e98-8de9-94c485df6fb8)
-![image](https://github.com/user-attachments/assets/bfcaa40d-1ca9-46aa-8017-5d258c816e4b)
+<p>
+  <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
+  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white">
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+  <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white">
+  <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
+</p>
+<p>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+  <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white">
+<!--   <img src="https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white"> -->
+</p>
+<br/><br/>
 
 <br>
 
@@ -114,10 +122,11 @@
 
 <br>
  
- #### - 남궁건우(팀장) : 
- #### - 우재희 : 
- #### - 우지훈 : 
- #### - 이유나 : 
- #### - 이석민 : 
+ 💭 한줄 회고
+  - 남궁건우(팀장) : 
+  - 구재회 : 
+  - 우지훈 : 
+  - 이유나 : 
+  - 이석민 : 
 
 
