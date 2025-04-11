@@ -10,7 +10,7 @@
 <table>
   <tr>
     <td align="center">
-      <img src="img/구재회.png" alt="로고" width="200" height="150"/><br>
+      <img src="img/구재회.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>구재회</b></span><br>
       <a href="https://github.com/yuna-id">
         <img src="https://img.shields.io/badge/GitHub-이유나-pink?logo=github" alt="이유나 GitHub"/>
