@@ -158,6 +158,11 @@
   <div style="display:inline-block; text-align:center; margin: 0 20px;">
     <img src="img/1.png" alt="메인페이지" width="950" height="380"/>
 <br>
+
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/2.png" alt="메인페이지" width="950" height="380"/>
+<br>
     
 ### 1) 국산차와 수입차 카테고리 구분
 ### 2) 로고 클릭시 해당 브랜드의 차량을 페이지 하단부에 조회. (조회내용: 차량 사진, 연료 타입, 가격)
@@ -167,7 +172,12 @@
 ## (2) 추천 차량
 <p align="center">
   <div style="display:inline-block; text-align:center; margin: 0 20px;">
-    <img src="img/2.png" alt="메인페이지" width="950" height="380"/>
+    <img src="img/3.png" alt="메인페이지" width="950" height="380"/>
+<br>
+
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/4.png" alt="메인페이지" width="950" height="380"/>
 <br>
 
 ### 1) 차량 추천을 위한 조건 입력란 현출
@@ -179,9 +189,20 @@
 <br>
 
 ## (3) 결함 정보
+
 <p align="center">
   <div style="display:inline-block; text-align:center; margin: 0 20px;">
-    <img src="img/3.png" alt="메인페이지" width="950" height="380"/>
+    <img src="img/5.png" alt="메인페이지" width="950" height="380"/>
+<br>
+
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/6.png" alt="메인페이지" width="950" height="380"/>
+<br>
+
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/8.png" alt="메인페이지" width="950" height="380"/>
 <br>
     
 ### 1) 조회를 위한 브랜드 또는 차종 입력란 현출
@@ -195,7 +216,7 @@
 ## (4) FAQ
 <p align="center">
   <div style="display:inline-block; text-align:center; margin: 0 20px;">
-    <img src="img/4.png" alt="메인페이지" width="950" height="380"/>
+    <img src="img/9.png" alt="메인페이지" width="950" height="380"/>
 
 <br>
 
