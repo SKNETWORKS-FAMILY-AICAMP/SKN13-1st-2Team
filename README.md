@@ -144,9 +144,10 @@
 <h3>2. Web (Streamlit)</h3>
 <p align = "left">
   <img src="img/폴더 구조.png" alt="폴더 구조"/><br>
-  메인 화면이 될 app.py 와 사이드 화면들 car_view, car_recommend, recall_info, faq 를 나눠 각 페이지의 목적과 맞게 구현<br>
-  utils 폴더 안에 db와의 connection을 넣어 관리 <br>
-  car_recommend 안에서 쓰일 recommendation 함수를 utils 안에 넣어서 관리
+  - 메인 앱은 `app.py`에서 구성하며, 각 기능 페이지(`car_view`, `car_recommend`, `recall_info`, `faq`)를 라우팅하여 연결함
+  - 각 페이지는 역할에 맞는 UI와 데이터 처리를 분리하여 설계
+  - `utils` 폴더에는 공통 로직을 모아 관리, 예: DB 연결 모듈 (`db.py`)
+  - 차량 추천 알고리즘은 `utils/car_recommendation.py`로 분리하여 `car_recommend`에서 호출
 </p>
 
 ## (4) BACKEND - crawling
