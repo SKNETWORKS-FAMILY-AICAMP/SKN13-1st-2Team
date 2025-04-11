@@ -136,8 +136,8 @@
 <br/><br/>
 
 ## (3) FRONTEND
-    > figma
-    > web(streamlit)
+> 1. figma
+> 2. web(streamlit)
 
 ## (4) BACKEND - crawling
    - 데이터 출처
