@@ -95,7 +95,7 @@
     </td>
   </tr>
   <tr>
-    <td align="left">streamlit</td>
+    <td align="left">Streamlit</td>
     <td align="left">
       <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
       <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white">
