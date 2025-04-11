@@ -126,9 +126,21 @@
 
 <br>
 <br>
-<수정필요>
-
-![image](https://github.com/user-attachments/assets/c1d84b2c-58e8-4b52-9eb2-69d59f030427)
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/1.png" alt="메인페이지" width="950" height="380"/>
+<br>
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/2.png" alt="메인페이지" width="950" height="380"/>
+<br>
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/3.png" alt="메인페이지" width="950" height="380"/>
+<br>
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 0 20px;">
+    <img src="img/4.png" alt="메인페이지" width="950" height="380"/>
 
 <br>
 <br>
