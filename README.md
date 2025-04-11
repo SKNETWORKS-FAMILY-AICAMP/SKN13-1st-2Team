@@ -136,13 +136,16 @@
 <br/><br/>
 
 ## (3) FRONTEND
-> 1. figma
+<h6>1. Figma</h6>
 <p align = "left">
   <img src="img/피그마.png" alt="피그마 화면"/><br>
   기초적인 streamlit 화면 구성을 figma를 통해 작업
 </p>
-> 2. web(streamlit)
-
+<h6>2. Web (Streamlit)</h6>
+<p align = "left">
+  <img src="img/폴더 구조.png" alt="폴더 구조"/><br>
+  메인 화면이 될 app.py 와 사이드 화면들 car_view, car_recommend, recall_info, faq 를 나눠 각 페이지의 목적과 맞게 구현
+</p>
 ## (4) BACKEND - crawling
    - 데이터 출처
 ## (5) backend - DB, ERD
