@@ -70,7 +70,7 @@
 
 <br>
 
-![image](https://github.com/user-attachments/assets/8613413c-7936-4b3f-86c8-ce5018a6bb0d)
+<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
 ![image](https://github.com/user-attachments/assets/701889c5-6373-433c-b832-69f82dfdc4f7)
 ![image](https://github.com/user-attachments/assets/64c0ee15-c515-4e7f-8ee6-84b63cfc7144)
 ![image](https://github.com/user-attachments/assets/ab611b20-e479-4d0e-9a3d-07526607f4ae)
