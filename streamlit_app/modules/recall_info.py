@@ -11,9 +11,9 @@ from utils.db import get_connection  # DB 연결 함수 가져오기
 import io
 
 
-# # 한국어 폰트 설정
-# matplotlib.rc('font', family='Malgun Gothic')
-# matplotlib.rcParams['axes.unicode_minus'] = False
+# 한국어 폰트 설정
+matplotlib.rc('font', family='Malgun Gothic')
+matplotlib.rcParams['axes.unicode_minus'] = False
 
 # 브랜드 매핑
 BRAND_MAPPING = {
