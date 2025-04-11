@@ -137,6 +137,10 @@
 
 ## (3) FRONTEND
 > 1. figma
+<p align = "left">
+  <img src="img/피그마.png" alt="피그마 화면"/><br>
+  기초적인 streamlit 화면 구성을 figma를 통해 작업
+</p>
 > 2. web(streamlit)
 
 ## (4) BACKEND - crawling
