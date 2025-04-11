@@ -14,7 +14,7 @@
       <img src="img/구재회.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>구재회</b></span><br>
       <a href="https://github.com/jaehoi-koo">
-        <img src="https://img.shields.io/badge/GitHub-jaehoi--koo-red?logo=github" alt="구재회 GitHub"/>
+        <img src="https://img.shields.io/badge/GitHub-jaehoi--koo-D83F46?logo=github" alt="구재회 GitHub"/>
       </a>
     </td>
     <td align="center">
