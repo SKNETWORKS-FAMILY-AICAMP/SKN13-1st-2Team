@@ -220,7 +220,7 @@
     <img src="img/erd.png" alt="메인페이지" width="950" height="380"/>
 
     
-### 3) 테이블 명세
+### 3) 테이블 명세서
 <p align="center">
   <div style="display:inline-block; text-align:center; margin: 0 20px;">
     <img src="img/명세서.png" alt="메인페이지" width="950" height="380"/>
