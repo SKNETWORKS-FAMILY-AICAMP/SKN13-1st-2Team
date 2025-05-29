@@ -42,8 +42,8 @@
     <td align="center">
       <img src="img/una.png" alt="로고" width="200" height="150"/>
       <span style="font-size:16px;"><b>이유나</b></span><br>
-      <a href="https://github.com/yowon7">
-        <img src="https://img.shields.io/badge/GitHub-yowon7-F1BFCA?logo=github" alt="이유나 GitHub"/>
+      <a href="https://github.com/yunawawa">
+        <img src="https://img.shields.io/badge/GitHub-yunawawa-F1BFCA?logo=github" alt="이유나 GitHub"/>
       </a>
     <td align="center">
       <img src="img/이석민.png" alt="로고" width="200" height="150"/>
